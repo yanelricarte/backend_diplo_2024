@@ -1,0 +1,47 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-size: 10px;
+}
+body{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.6rem;
+}
+h1{
+  color: #587b74;
+}
+
+.img{
+width: 50%;
+}
+.img img{
+  width: 100%;
+}
+
+/* Estilos menu*/
+
+nav{
+  background-color: #587b74;
+  color: white;
+}
+
+nav ul{
+  list-style-type: none; 
+  display: flex;
+  justify-content: center;
+}
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul a {
+  color: white;
+  text-decoration: none;
+  font-weight:  bold;
+}
+main{
+  padding: 2rem;
+  text-align: center;
+}
