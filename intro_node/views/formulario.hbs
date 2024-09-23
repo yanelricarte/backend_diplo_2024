@@ -1,9 +1,19 @@
 {{> header}}
 
   <h1> Formulario de contacto</h1>
-<form action="">
-  
-</form>
+<form action="/formulario" method="POST"> <!-- Acción hacia la ruta del formulario -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" required>
+
+        <label for="edad">Edad:</label>
+        <input type="number" name="edad" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+
+        <button type="submit">Agregar</button>
+    </form>
+    <a href="/">Volver a la lista de usuarios</a>
 
   {{> footer}}
 

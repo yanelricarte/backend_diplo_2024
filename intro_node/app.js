@@ -1,26 +1,36 @@
+// Importar módulos
 const express = require('express');
+const hbs = require('hbs');
+const path = require('path');
+const routes = require('./routes/routes'); // Importar rutas
+
+// Inicializar la aplicación
 const app = express();
-const hbs = require('hbs')
-const path = require('path')
-const routes = require('./routes/routes');
 const port = 3000;
 
-//Middleware para servir contenido estático
-app.use(express.static(path.join(__dirname, "./public"))); 
+// -------------------------- MIDDLEWARE -------------------------- //
+
+// Middleware para servir contenido estático
+app.use(express.static(path.join(__dirname, './public')));
 
 // Middleware para procesar formularios
-app.use(express.urlencoded ({extended: true}))
+app.use(express.urlencoded({ extended: true }));
 
-//Archivo de rutas
-app.use('/', routes)
+// -------------------------- CONFIGURACIÓN DE RUTAS -------------------------- //
 
-//Configurar el motor de plantilla
+// Archivo de rutas
+app.use('/', routes);
+
+// -------------------------- CONFIGURACIÓN DEL MOTOR DE PLANTILLAS -------------------------- //
+
+// Configurar el motor de plantillas
 app.set('view engine', 'hbs');
-app.set("views", path.join(__dirname, "views")); 
-hbs.registerPartials(path.join(__dirname, "views", "partials")); 
+app.set('views', path.join(__dirname, 'views'));
 
+// Registrar parciales
+hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
 
-
+// -------------------------- INICIAR EL SERVIDOR -------------------------- //
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
 });
