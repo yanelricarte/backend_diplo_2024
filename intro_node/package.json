@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.0",
+    "hbs": "^4.2.0",
     "moment": "^2.30.1"
   }
 }

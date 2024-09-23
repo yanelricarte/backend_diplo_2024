@@ -1,0 +1,21 @@
+{{> header}}
+  <main>
+  <h1> Lista de usuarios </h1>
+  <ul>
+  {{#each usuarios}}
+  <li> Nombre : {{nombre}} - Edad: {{edad}} - Email: {{email}}</li>
+  {{/each}}
+
+</ul>
+
+    <div class="img">
+        <img src="/img/poster_sda.jpg" alt="">
+    </div>
+</main>
+
+
+{{> footer}}
+
+</body>
+
+</html>
