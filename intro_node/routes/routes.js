@@ -1,8 +1,13 @@
 const express = require('express');
 const path = require('path');
+const nodemailer = require('nodemailer'); // Importar Nodemailer
 const router = express.Router(); // Crear instancia router para definir las rutas
+const hbs = require('hbs');
+const fs = require('fs');
 
-// Variable para almacenar el último usuario agregado
+
+
+
 let usuario = {}; 
 
 // -------------------------- RUTAS -------------------------- //
@@ -52,6 +57,46 @@ router.get('/usuario', (req, res) => {
 // Ruta para manejar errores 404
 router.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/../public/404.html'));
+});
+
+// Ruta para manejar el envío de correos
+router.post('/enviar-email', (req, res) => {
+  const { nombre, email, mensaje } = req.body; // Obtener datos del formulario
+
+  // Configuración de Nodemailer
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    secure: false, 
+    auth: {
+      user: 'kariane.ohara@ethereal.email', // Credenciales de Ethereal
+      pass: 'MENj8jwAg4yHmQRTMJ',
+    },
+  });
+
+
+//Leer y compilar la plantilla hbs
+  const template = hbs.compile(fs.readFileSync(path.join(__dirname, '../views', 'email.hbs'), 'utf-8')); 
+
+  // Generar el html del correo con plantilla y los datos del formulario
+  const htmlToSend = template({ nombre, email, mensaje});
+
+  // Configurar el contenido del correo
+  const mailOptions = {
+    from: email,
+    to: 'naranjaspintadas@gmail.com', 
+    subject: `Nuevo mensaje de ${nombre}`,
+    html: htmlToSend,
+  };
+
+  // Enviar el correo
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error al enviar el correo:', error);
+      return res.status(500).send('Error al enviar el correo: ' + error.message);
+    }
+    res.send('Correo enviado exitosamente.');
+  });
 });
 
 // -------------------------- EXPORTAR RUTAS -------------------------- //

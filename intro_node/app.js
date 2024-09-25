@@ -6,7 +6,7 @@ const routes = require('./routes/routes'); // Importar rutas
 
 // Inicializar la aplicación
 const app = express();
-const port = 3000;
+const port = 3002;
 
 // -------------------------- MIDDLEWARE -------------------------- //
 

@@ -1,0 +1,64 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: f4f4f4; color: black; } 
+      
+      .container { max-width: 600px;
+      margin: 0 auto; 
+      background-color: aliceblue; padding: 2rem; 
+      border-radius:
+      0.7rem; 
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); } 
+      
+      .header{
+      background-color: 
+      rgb(183, 95, 117); 
+      color: white; 
+      padding: 0.8rem;
+      text-align: center; border-radius: 0.7rem; }
+      .header h1{
+              font-size: 1.2rem;
+
+      }
+      .footer{
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.8rem;
+        color: #999;
+      }
+      .footer a {
+        color: #3e599a;
+        text-decoration: none;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1> Nuevo mensaje de {{nombre}}</h1>
+      </div>
+      <div class="message-content">
+        <p><strong> Nombre: </strong>{{nombre}}</p>
+        <p><strong> Correo: </strong>{{email}}</p>
+        <p><strong> Mensaje </strong></p>
+        <p>{{mensaje}}</p>
+      </div>
+
+      <div class="footer">
+
+        <p>
+          Este correo fue enviado desde el formulario de contacto de nuestro
+          sitio web
+        </p>
+        <p> <a href="https://nuestrositio.com">nuestrositio.com</a></p>
+      </div>
+
+    </div>
+
+  </body>
+</html>

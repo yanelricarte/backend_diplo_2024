@@ -1,7 +1,7 @@
 {{> header}}
 
   <h1> Formulario de contacto</h1>
-<form action="/formulario" method="POST"> <!-- Acción hacia la ruta del formulario -->
+<form action="/enviar-email" method="POST"> <!-- Acción hacia la ruta del formulario -->
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" required>
 
@@ -11,7 +11,10 @@
         <label for="email">Email:</label>
         <input type="email" name="email" required>
 
-        <button type="submit">Agregar</button>
+        <label for="mensaje"> Mensaje: </label>
+        <textarea name="mensaje" id=""></textarea>
+
+        <button type="submit">Enviar</button>
     </form>
     <a href="/">Volver a la lista de usuarios</a>
 
