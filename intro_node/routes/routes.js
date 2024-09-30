@@ -69,8 +69,8 @@ router.post('/enviar-email', (req, res) => {
     port: 587,
     secure: false, 
     auth: {
-      user: 'kariane.ohara@ethereal.email', // Credenciales de Ethereal
-      pass: 'MENj8jwAg4yHmQRTMJ',
+      user: 'dawson50@ethereal.email', // Credenciales de Ethereal
+      pass: 'vwB2Yr8bxPs5pDaSPJ',
     },
   });
 

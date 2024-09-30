@@ -45,3 +45,27 @@ main{
   padding: 2rem;
   text-align: center;
 }
+table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+form {
+  margin: 20px 0;
+  text-align: center;
+}
+
+input, button {
+  padding: 10px;
+  margin: 5px;
+}

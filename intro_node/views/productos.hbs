@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <h1>Productos</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each results}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.producto_nombre}}</td>
+        <td>{{this.producto_precio}}</td>
+        <td>
+          <a href="/productos/update/{{this.id}}">Editar</a>
+          <a href="/productos/delete/{{this.id}}">Eliminar</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <form action="/productos/save" method="POST">
+    <input type="text" name="producto_nombre" placeholder="Nombre del producto" required>
+    <input type="text" name="producto_precio" placeholder="Precio del producto" required>
+    <button type="submit">Agregar Producto</button>
+  </form>
+
+</body>
+</html>

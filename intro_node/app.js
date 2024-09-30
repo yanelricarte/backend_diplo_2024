@@ -2,7 +2,10 @@
 const express = require('express');
 const hbs = require('hbs');
 const path = require('path');
-const routes = require('./routes/routes'); // Importar rutas
+const routes = require('./routes/routes'); 
+const productosRouter = require('./routes/productos'); 
+
+
 
 // Inicializar la aplicación
 const app = express();
@@ -19,7 +22,9 @@ app.use(express.urlencoded({ extended: true }));
 // -------------------------- CONFIGURACIÓN DE RUTAS -------------------------- //
 
 // Archivo de rutas
+app.use('/productos', productosRouter);
 app.use('/', routes);
+
 
 // -------------------------- CONFIGURACIÓN DEL MOTOR DE PLANTILLAS -------------------------- //
 
