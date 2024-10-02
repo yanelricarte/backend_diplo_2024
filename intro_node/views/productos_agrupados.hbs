@@ -1,0 +1,26 @@
+{{> header}}
+
+  <h1> Productos Agrupados por rango de precio </h1>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>Rango de precio </th>
+        <th>Total de productos</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each results}}
+      <tr>
+        <td>{{this.rango_precio}}</td>
+        <td>{{this.total}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <a href="/productos"> Volver a productos</a>
+
+  {{> footer}}
+

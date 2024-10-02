@@ -73,8 +73,6 @@ router.get('/delete/:id', (req, res) => {
 
 
 /* Pool de conexiones  */
-
-
 // Crear un pool de conexiones
 const pool = mysql.createPool({
   host: 'localhost',
@@ -137,6 +135,76 @@ router.get('/delete/:id', (req, res) => {
   pool.query(sql, [req.params.id], (err, results) => {
     if (err) throw err;
     res.redirect('/productos');
+  });
+});
+// Búsqueda de productos por nombre (SELECT)
+router.get('/search', (req, res) => {
+  const nombre = req.query.nombre;
+  const sql = "SELECT * FROM producto WHERE producto_nombre LIKE ?";
+  pool.query(sql, [`%${nombre}%`], (err, results) => {
+    if (err) throw err;
+    res.render('productos', { results });
+  });
+})
+
+// Obtener el conteo total de productos
+router.get('/count', (req, res) => {
+  const sql = "SELECT COUNT(*) AS total FROM producto";
+  pool.query(sql, (err, results) => {
+    if (err) throw err;
+    res.json({ total: results[0].total });
+  });
+});
+
+// Obtener productos con precio superior a un valor específico
+router.get('/mayor/:precio', (req, res) => {
+  const sql = "SELECT * FROM producto WHERE producto_precio > ?";
+  pool.query(sql, [req.params.precio], (err, results) => {
+    if (err) throw err;
+    res.render('productos', { results });
+  });
+});
+
+// Obtener productos agrupados por rango de precio
+router.get('/rango-precio', (req, res) => {
+  const sql = `
+  SELECT CASE 
+  WHEN producto_precio < 1000 THEN 'Bajo'
+  WHEN producto_precio BETWEEN 1000 AND 5000 THEN 'Medio'
+  ELSE 'Alto'
+  END AS rango_precio,
+  COUNT(*) total
+  FROM producto
+  GROUP BY rango_precio`;
+  pool.query(sql, (err, results) => {
+    if (err) throw err;
+    res.render('productos_agrupados', { results });
+  });
+});
+
+// Obtener productos junto con categorías (JOIN)
+router.get('/productos-categorias', (req, res) => {
+  const sql = `
+    SELECT 
+      p.id, 
+      p.producto_nombre, 
+      p.producto_precio, 
+      c.categoria_nombre 
+    FROM producto p
+    JOIN categoria c ON p.categoria_id = c.id
+  `;
+  pool.query(sql, (err, results) => {
+    if (err) throw err;
+    res.render('productos_categorias', { results });
+  });
+});
+
+// Obtener productos más caros (ORDER BY)
+router.get('/mas-caros', (req, res) => {
+  const sql = "SELECT * FROM producto ORDER BY producto_precio DESC LIMIT 5";
+  pool.query(sql, (err, results) => {
+    if (err) throw err;
+    res.render('productos_mas_caros', { results });
   });
 });
 

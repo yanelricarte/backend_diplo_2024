@@ -3,6 +3,13 @@
 <body>
   <h1>Productos</h1>
 
+  <div class="buscador">
+    <form action="/productos/search" method="get">
+    <input type="text" name="nombre" placeholder=" Buscar por nombre">
+    <button type="submit"> Buscar</button></form>
+
+  </div>
+
   <table>
     <thead>
       <tr>
@@ -32,5 +39,16 @@
     <input type="text" name="producto_precio" placeholder="Precio del producto" required>
     <button type="submit">Agregar Producto</button>
   </form>
+
+  <h2> Total  Productos </h2>
+  <div id="total-productos"> </div>
+
+  <script>
+    fetch('/productos/count')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('total-productos').innerText = `Total: ${data.total}`;
+      });
+  </script>
 
 {{> footer}}

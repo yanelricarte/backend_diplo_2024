@@ -1,0 +1,28 @@
+{{> header}}
+
+  <h1> Productos de mayor precio </h1>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID </th>
+        <th>Nombre</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each results}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.producto_nombre}}</td>
+        <td>{{this.producto_precio}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <a href="/productos"> Volver a productos</a>
+
+  {{> footer}}
+
