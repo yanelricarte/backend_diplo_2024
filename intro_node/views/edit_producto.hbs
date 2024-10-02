@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Producto</title>
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <h1>Editar Producto</h1>
+
+  <form action="/productos/update/{{producto.id}}" method="POST">
+    <input type="text" name="producto_nombre" value="{{producto.producto_nombre}}" required>
+    <input type="number" name="producto_precio" value="{{producto.producto_precio}}" required>
+    <button type="submit">Actualizar Producto</button>
+  </form>
+
+  <a href="/productos">Volver a la lista</a>
+</body>
+</html>
