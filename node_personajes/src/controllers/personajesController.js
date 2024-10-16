@@ -15,6 +15,7 @@ const getAllPersonajes = async (req, res) => {
 // Crear un nuevo personaje
 const createPersonaje = async (req, res) => {
   const { nombre, edad, casa, rol } = req.body;
+  /* const imagenPath = req.file ? req.file.filename : ''; */
 
   // Validar que los datos sean válidos
   if (!nombre || isNaN(parseInt(edad)) || !casa || !rol) {
@@ -27,6 +28,7 @@ const createPersonaje = async (req, res) => {
       edad: parseInt(edad),
       casa,
       rol,
+     /* imagen: imagenPath, */
     });
     await nuevoPersonaje.save();
     res.status(303).redirect("/personajes");
@@ -52,10 +54,9 @@ const editPersonaje = async (req, res) => {
 
 // Actualizar personaje
 const updatePersonaje = async (req, res) => {
-  console.log("Datos recibidos: ", req.body); 
-
   const { nombre, edad, casa, rol } = req.body;
-  console.log(nombre, edad, casa, rol); 
+  /* 
+  const imagenPath = req.file ? req.file.filename : '';*/
 
   /* Validar que los datos sean válidos*/
   if (!nombre || isNaN(parseInt(edad)) || !casa || !rol) {
@@ -75,6 +76,8 @@ if (!mongoose.Types.ObjectId.isValid(personajeId)) {
       edad: parseInt(edad),
       casa,
       rol,
+      /* imagen: imagenPath,*/
+
     }, { new: true });
 
     if (!personajeActualizado) {

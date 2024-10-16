@@ -20,6 +20,8 @@ router.get("/edit/:id", personajesController.editPersonaje);
 //Ruta para manejar la actualización de un personaje
 router.post("/edit/:id", personajesController.updatePersonaje);
 
+/*router.post("/edit/:id", upload.single("imagen"), personajesController.updatePersonaje);
+ */
 //Ruta para eliminar personaje
 router.get("/delete/:id", personajesController.deletePersonaje)
 
