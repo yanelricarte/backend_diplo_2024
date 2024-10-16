@@ -11,7 +11,6 @@ Este proyecto es una aplicación desarrollada con Node.js que utiliza Express pa
     - **models/**: Carpeta para los modelos de datos (Mongoose).
     - **controllers/**: Carpeta para los controladores de la lógica de negocio.
     - **views/**: Carpeta para las vistas (si se utiliza un motor de plantillas).
-    - **middlewares/**: Carpeta para los middlewares personalizados.
   - **.env**: Archivo de variables de entorno.
   - **.gitignore**: Archivos y carpetas que Git debe ignorar.
   - **package.json**: Archivo de configuración de npm.
