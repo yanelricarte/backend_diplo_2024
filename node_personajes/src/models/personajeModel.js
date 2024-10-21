@@ -6,7 +6,7 @@ const personajeSchema = new mongoose.Schema({
   edad: { type: Number, required: true },
   casa: { type: String, required: true },
   rol: { type: String, required: true },
-  imagen: { type: String, default:'' }
+  imagen: { type: String, default:'' } //Ruta de la imagen
   
 })
 

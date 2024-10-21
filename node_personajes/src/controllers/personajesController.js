@@ -12,14 +12,17 @@ const getAllPersonajes = async (req, res) => {
   }
 };
 
+
 // Crear un nuevo personaje
 const createPersonaje = async (req, res) => {
   const { nombre, edad, casa, rol } = req.body;
-  /* const imagenPath = req.file ? req.file.filename : ''; */
+  const imagenPath = req.file ? req.file.filename : ""; // Ruta de la imagen guardada en el servidor
 
   // Validar que los datos sean válidos
   if (!nombre || isNaN(parseInt(edad)) || !casa || !rol) {
-    return res.status(400).send("Todos los campos son obligatorios y la edad debe ser un número");
+    return res
+      .status(400)
+      .send("Todos los campos son obligatorios y la edad debe ser un número");
   }
 
   try {
@@ -28,7 +31,7 @@ const createPersonaje = async (req, res) => {
       edad: parseInt(edad),
       casa,
       rol,
-     /* imagen: imagenPath, */
+      imagen: imagenPath,
     });
     await nuevoPersonaje.save();
     res.status(303).redirect("/personajes");
@@ -55,30 +58,34 @@ const editPersonaje = async (req, res) => {
 // Actualizar personaje
 const updatePersonaje = async (req, res) => {
   const { nombre, edad, casa, rol } = req.body;
-  /* 
-  const imagenPath = req.file ? req.file.filename : '';*/
+  const imagenPath = req.file ? req.file.filename : '';
 
   /* Validar que los datos sean válidos*/
   if (!nombre || isNaN(parseInt(edad)) || !casa || !rol) {
-    return res.status(400).send("Todos los campos son obligatorios y la edad debe ser un número");
+    return res
+      .status(400)
+      .send("Todos los campos son obligatorios y la edad debe ser un número");
   }
   // Obtener y limpiar el ID personaje
-const personajeId = req.params.id.trim() //Eliminar espacios 
-console.log("ID del personaje", personajeId);
+  const personajeId = req.params.id.trim(); //Eliminar espacios
+  console.log("ID del personaje", personajeId);
 
-// Validar que el ID sea valido
-if (!mongoose.Types.ObjectId.isValid(personajeId)) {
-  return res.status(400).send("ID de personaje no válido");
-}
+  // Validar que el ID sea valido
+  if (!mongoose.Types.ObjectId.isValid(personajeId)) {
+    return res.status(400).send("ID de personaje no válido");
+  }
   try {
-    const personajeActualizado = await Personaje.findByIdAndUpdate(personajeId, {
-      nombre,
-      edad: parseInt(edad),
-      casa,
-      rol,
-      /* imagen: imagenPath,*/
-
-    }, { new: true });
+    const personajeActualizado = await Personaje.findByIdAndUpdate(
+      personajeId,
+      {
+        nombre,
+        edad: parseInt(edad),
+        casa,
+        rol,
+        imagen: imagenPath,
+      },
+      { new: true }
+    );
 
     if (!personajeActualizado) {
       return res.status(404).send("Personaje no encontrado");

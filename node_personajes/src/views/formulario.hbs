@@ -1,5 +1,5 @@
 <h1> Crear nuevo personaje</h1>
-<form action="/personajes/crear" method="post">
+<form action="/personajes/crear" method="post" enctype="multipart/form-data">
 
 <label for="nombre"> Nombre </label>
 <input type="text" id="nombre" name="nombre"> <br><br>
@@ -15,9 +15,7 @@
 <label for="rol"> Rol </label>
 <input type="text" id="rol" name="rol"> <br><br>
 
-
-
-  <label for="imagen">Imagen:</label>
+<label for="imagen">Imagen:</label>
   <input type="file" id="imagen" name="imagen" accept=".jpg, .jpeg, .png" required><br><br>
 
 

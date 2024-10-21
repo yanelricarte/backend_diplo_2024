@@ -1,4 +1,4 @@
-<form action="/personajes/edit/{{personaje._id}}" method="POST">
+<form action="/personajes/edit/{{personaje._id}}" method="POST" enctype="multipart/form-data">
   <label for="nombre">Nombre:</label>
   <input type="text" id="nombre" name="nombre" value="{{personaje.nombre}}" required>
 <br><br>
@@ -13,10 +13,9 @@
   <label for="rol">Rol:</label>
   <input type="text" id="rol" name="rol" value="{{personaje.rol}}" required>
 <br><br>
-<!-- 
-  <label for="imagen">Imagen:</label>
-  <input type="file" name="imagen" /><br><br>-->
 
+  <label for="imagen">Imagen:</label>
+  <input type="file" name="imagen" /><br><br>
 
   <button type="submit">Actualizar Personaje</button>
 </form>
