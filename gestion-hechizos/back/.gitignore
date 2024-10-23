@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# Dependency directories
+jspm_packages/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Build directories
+dist/
+build/
+
+# Compiled files
+*.tsbuildinfo
+
+# Miscellaneous
+*.tgz
+*.swp
+*.swo
