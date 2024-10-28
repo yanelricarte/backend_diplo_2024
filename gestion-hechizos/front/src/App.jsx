@@ -12,11 +12,16 @@ import DetalleHechizo from './componentes/hechizos/DetalleHechizo';
 import CrearHechizo from './componentes/hechizos/CrearHechizo';
 import EditarHechizo from './componentes/hechizos/EditarHechizo';
 import Register from './componentes/api/Register';
+import Login from './componentes/api/Login';
+import { AuthProvider } from './componentes/api/AuthContext';
+import Protegida from './componentes/protegida/Protegida';
+import ProtectedRoute from './componentes/api/ProtectedRoute';
 
 
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
       <div className="container">
         <Header />
@@ -32,13 +37,16 @@ function App() {
             <Route path="/crear" element={<CrearHechizo />} />
             <Route path="/hechizos/:id" element={<DetalleHechizo />} />
             <Route path="/editar-hechizo/:id" element={<EditarHechizo />} />
+            <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path="/protegida" element={<ProtectedRoute element={<Protegida />} />} />
 
           </Routes>
         </main>
         <Footer />
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 
