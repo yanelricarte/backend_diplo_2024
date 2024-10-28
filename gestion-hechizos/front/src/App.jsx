@@ -11,6 +11,7 @@ import ListaHechizos from './componentes/hechizos/ListaHechizos';
 import DetalleHechizo from './componentes/hechizos/DetalleHechizo';
 import CrearHechizo from './componentes/hechizos/CrearHechizo';
 import EditarHechizo from './componentes/hechizos/EditarHechizo';
+import Register from './componentes/api/Register';
 
 
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="/crear" element={<CrearHechizo />} />
             <Route path="/hechizos/:id" element={<DetalleHechizo />} />
             <Route path="/editar-hechizo/:id" element={<EditarHechizo />} />
+            <Route path='/register' element={<Register />} />
 
           </Routes>
         </main>

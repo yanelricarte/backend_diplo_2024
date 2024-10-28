@@ -12,6 +12,8 @@ const Menu = () =>{
         <li> <Link to ="/casas" > Casas </Link> </li>
         <li> <Link to ="/personajes" > Personajes </Link> </li>
         <li> <Link to ="/hechizos" > Hechizos </Link> </li>
+        <li> <Link to ="/register" > Registro </Link> </li>
+
 
 
       </ul>
