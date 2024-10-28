@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Hechizo = require('../models/HechizoModel');
+const Hechizo = require('../models/HechizosModel');
 
 // Obtener todos los hechizos
 exports.getHechizos = async (req, res) => {
